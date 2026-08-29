@@ -17,6 +17,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
+      # NOT a desktop leftover: tauri is an unconditional dependency of this
+      # crate, so even the linux-host check compiles its GTK/WebKit sys libs.
       - run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
